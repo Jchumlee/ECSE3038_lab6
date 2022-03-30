@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Joshua's Pit Stop</title>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/modern-normalize@1.1.0/modern-normalize.css"
+		/>
+		<link rel="stylesheet" href="./style.css" />
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://unpkg.com/vue@3"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<header>
+				<h1>Joshua's Pit Stop</h1>
+			</header>
+			<div class="wrapper">
+				<aside class="default-padding">
+					<div class="profile">
+						<h2>Your Profile</h2>
+						<p class="username">{{username}}</p>
+						<p><strong>Role:</strong> {{role}}</p>
+						<p><strong>Color:</strong> {{color}}</p>
+						<p><strong>Last updated:</strong> {{last_updated}}</p>
+					</div>
+				</aside>
+				<main class="default-padding">
+					<div class="action-container">
+						<h2>Available tanks</h2>
+						<div class="form-container">
+							<p>
+								Use the form to add new tanks, all fields are
+								required
+							</p>
+							<form
+								id="add-tank"
+								name="add-tank"
+								@submit.prevent="addTank"
+							>
+								<div class="input-container">
+									<input
+										id="location"
+										name="location"
+										type="text"
+										placeholder="location"
+										v-model.trim="location"
+										required
+									/>
+								</div>
+								<div class="input-container">
+									<input
+										id="lat"
+										name="lat"
+										type="text"
+										placeholder="lat"
+										v-model.trim.number="lat"
+										@keydown="isNum"
+										required
+									/>
+								</div>
+								<div class="input-container">
+									<input
+										id="long"
+										name="long"
+										type="text"
+										placeholder="long"
+										v-model.trim.number="long"
+										@keydown="isNum"
+										required
+									/>
+								</div>
+								<div class="input-container">
+									<input
+										id="percentage_full"
+										name="percentage_full"
+										type="number"
+										placeholder="percentage full"
+										min="0"
+										max="100"
+										pattern="\d*.{3}"
+										v-model.trim.number="percentage_full"
+										required
+									/>
+								</div>
+								<button type="submit">Create tank</button>
+							</form>
+						</div>
+					</div>
+					<div class="results">
+						<div
+							v-for="(tank,idx) in tanks"
+							:key="`tank-${idx}`"
+							class="tank"
+						>
+							<div class="details">
+								<p>
+									<strong>location:</strong> {{tank.location}}
+								</p>
+								<p><strong>lat:</strong> {{tank.lat}}</p>
+								<p><strong>lng:</strong> {{tank.long}}</p>
+								<p>
+									<strong
+										>Remaing:
+										{{tank.percentage_full}}%</strong
+									>
+								</p>
+							</div>
+							<div
+								class="progress"
+								:style="{width: `${tank.percentage_full}%`}"
+							></div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+		<script src="./script.js"></script>
+	</body>
+</html>

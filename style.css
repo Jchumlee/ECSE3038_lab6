@@ -1,0 +1,209 @@
+html {
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+}
+
+#app {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+header {
+	padding: 10px;
+	background-color: rgb(252, 252, 252);
+}
+
+header h1 {
+	text-align: center;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+}
+
+.default-padding {
+	padding: 1.5rem;
+}
+
+.default-padding:last-child {
+	padding-left: 0;
+}
+
+.profile {
+	background-color: rgb(245, 245, 245);
+	padding: 1.5rem;
+	border-radius: 0.5rem;
+	flex: 1;
+}
+
+.profile p.username {
+	font-size: 1.25rem;
+	letter-spacing: -0.025rem;
+	font-weight: 500;
+}
+
+.profile h2 {
+	margin-bottom: 1rem;
+}
+
+.profile p {
+	margin-bottom: 8px;
+}
+
+aside {
+	box-sizing: border-box;
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	box-sizing: border-box;
+	flex: 1;
+	background-color: white;
+}
+
+.results {
+	padding-top: 1.5rem;
+	display: grid;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.tank {
+	position: relative;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1.5rem;
+	box-sizing: border-box;
+	overflow: hidden;
+	background-color: rgb(245, 245, 245);
+}
+
+.tank .details {
+	position: relative;
+	z-index: 10;
+	font-size: 1rem;
+}
+
+.tank .details p {
+	flex: 1;
+}
+
+.tank .progress {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: rgb(129, 231, 231);
+	z-index: 0;
+}
+
+.action-container h2 {
+	margin-bottom: 1rem;
+}
+
+.form-container {
+	border: 1px solid rgb(220, 220, 220);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+}
+
+#add-tank {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#add-tank .input-container {
+	width: 100%;
+	margin: 0.5rem 0;
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+#add-tank .input-container:first-child {
+	margin-left: 0;
+}
+
+#add-tank .input-container:last-child {
+	margin-right: 0;
+}
+
+#add-tank .input-container input {
+	width: 100%;
+	padding: 0.25rem;
+	border-radius: 0.5rem;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+input[type="phone"],
+select {
+	border: 1px solid;
+	margin-bottom: 0 !important;
+}
+
+input:required:focus:invalid[type="text"],
+input:required:focus:invalid[type="search"],
+input:required:focus:invalid[type="email"],
+input:required:focus:invalid[type="tel"],
+input:required:focus:invalid[type="number"],
+input:required:focus:invalid[type="password"],
+input:required:focus:invalid[type="phone"] {
+	outline-color: red;
+}
+
+input:required:valid[type="text"],
+input:required:valid[type="search"],
+input:required:valid[type="email"],
+input:required:valid[type="tel"],
+input:required:valid[type="number"],
+input:required:valid[type="password"],
+input:required:valid[type="phone"] {
+	outline-color: green;
+}
+
+#add-tank button[type="submit"] {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	padding: 0.25rem 0;
+	cursor: pointer;
+	text-transform: uppercase;
+	border-radius: 0.5rem;
+	border: 1px solid black;
+}
+
+@media screen and (min-width: 64em) {
+	.results {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	#add-tank {
+		flex-direction: row;
+	}
+
+	#add-tank .input-container {
+		width: 20%;
+		margin: 0.5rem;
+	}
+
+	#add-tank button[type="submit"] {
+		width: 20%;
+	}
+}
+
+/* reset some things */
+h1,
+h2,
+p {
+	margin: 0;
+}
